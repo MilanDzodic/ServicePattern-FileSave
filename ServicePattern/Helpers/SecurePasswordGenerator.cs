@@ -1,8 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
-
-
 namespace ServicePattern.Helpers;
 
 public static class SecurePasswordGenerator
@@ -24,7 +22,6 @@ public static class SecurePasswordGenerator
       Debug.WriteLine(ex.Message);
       return null!;
     }
-
   }
 
   public static bool Validate(string password, string expectedHashPassword)
@@ -41,6 +38,5 @@ public static class SecurePasswordGenerator
       Debug.WriteLine(ex.Message);
       return false!;
     }
-
   }
 }

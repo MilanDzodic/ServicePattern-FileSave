@@ -33,12 +33,13 @@ public class UserServices
   {
     try
     {
-      _users = _fileService.LoadListFromFile();
-      return _users.Select(UserFactory.Create);
+      var users = _fileService.LoadListFromFile();
+      return users.Select(UserFactory.Create);
     }
     catch (Exception ex)
     {
       Debug.WriteLine(ex.Message);
+      return [];
     }
   }
 }

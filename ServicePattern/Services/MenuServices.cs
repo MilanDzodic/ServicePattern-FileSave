@@ -6,7 +6,7 @@ namespace ServicePattern.Services;
 
 public class MenuServices : IMenuServices
 {
-  private static readonly UserServices _userServices = new UserServices();
+  private static readonly UserServices _userServices = new();
 
   public void Show()
   {
@@ -72,6 +72,8 @@ public class MenuServices : IMenuServices
       OutputDialog("User was successfully created.");
     else
       OutputDialog("User was not successfully created.");
+
+    Console.ReadKey();
   }
 
   public void ShowOption()
@@ -83,7 +85,7 @@ public class MenuServices : IMenuServices
     foreach (var user in users)
     {
       Console.WriteLine($"{"Id:", -10}{user.Id}");
-      Console.WriteLine($"{"Name:",-10}{user.Firstname} {user.LastName}");
+      Console.WriteLine($"{"Name:",-10}{user.FirstName} {user.LastName}");
       Console.WriteLine($"{"Email:",-10}{user.Email}");
       Console.WriteLine("");
     }

@@ -5,11 +5,8 @@ namespace ServicePattern.Factories;
 
 public static class UserFactory
 {
-  public static UserRegistrationForm Create()
-  {
-    return new UserRegistrationForm();
-  }
-  
+  public static UserRegistrationForm Create() => new();
+
   public static UserEntity Create(UserRegistrationForm form)
   {
     return new UserEntity()
@@ -19,14 +16,12 @@ public static class UserFactory
       Email = form.Email
     };
   }
-  public static User Create(UserEntity entity)
+  public static User Create(UserEntity entity) => new()
   {
-    return new User()
-    {
-      Id = entity.Id,
-      Firstname = entity.FirstName,
-      LastName = entity.LastName,
-      Email = entity.Email
-    };
-  }
+    Id = entity.Id,
+    FirstName = entity.FirstName,
+    LastName = entity.LastName,
+    Email = entity.Email
+  };
+ 
 }

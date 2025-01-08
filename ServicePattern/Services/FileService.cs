@@ -10,14 +10,14 @@ public class FileService
   private readonly string _filePath;
   private readonly JsonSerializerOptions _jsonSerializerOptions;
 
-  public FileService(string directoryPath = @"G:\VSProject\ServicePattern+FileSave", string filePath = "List.json")
+  public FileService(string directoryPath = "Data", string filePath = "List.json")
   {
     _directoryPath = directoryPath;
     _filePath = Path.Combine(_directoryPath, filePath);
     _jsonSerializerOptions = new JsonSerializerOptions { WriteIndented = true };
   }
 
-  public void SaveListToFile(List<User> list)
+  public void SaveListToFile(List<UserEntity> list)
   {
     try
     {
@@ -27,7 +27,7 @@ public class FileService
       }
 
       var json = JsonSerializer.Serialize(list, _jsonSerializerOptions);
-      File.WriteAllText(json, _filePath);
+      File.WriteAllText(_filePath, json);
     }
 
     catch (Exception ex)
@@ -36,7 +36,7 @@ public class FileService
     }
   }
 
-  public List<User> LoadListFromFile()
+  public IEnumerable<UserEntity> LoadListFromFile()
   {
     try
     {
@@ -46,7 +46,7 @@ public class FileService
       }
 
       var json = File.ReadAllText(_filePath);
-      var list = JsonSerializer.Deserialize<List<User>>(json, _jsonSerializerOptions);
+      var list = JsonSerializer.Deserialize<List<UserEntity>>(json, _jsonSerializerOptions);
       return list ?? [];
     }
     catch (Exception ex)
