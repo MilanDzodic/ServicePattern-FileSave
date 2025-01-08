@@ -8,7 +8,7 @@ public class SecurePasswordGenerator_Tests
   public void Generate_ShouldReturnValidHash()
   {
     // Arrange
-    string password = "SecurePassword123!";
+    string password = "HejHans123!";
     // Act
     string hash = SecurePasswordGenerator.Generate(password);
     // Assert
